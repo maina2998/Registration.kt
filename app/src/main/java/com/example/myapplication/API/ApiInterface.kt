@@ -9,4 +9,5 @@ import retrofit2.http.POST
 interface ApiInterface {
     @POST("/students/register")
     fun registerStudent(@Body registrationRequest: RegistrationRequest): Call<RegistrationResponse>
+    abstract fun logInStudent(lrgRequest: Any): Any
 }

@@ -9,20 +9,24 @@ import com.example.myapplication.API.ApiClient
 import com.example.myapplication.API.ApiInterface
 import com.example.myapplication.Models.LoginRequest
 import com.example.myapplication.databinding.ActivityAnimalsBinding.inflate
+import com.example.myapplication.databinding.ActivityCouresesBinding.inflate
 import com.example.myapplication.databinding.ActivityCoursesBinding.inflate
+import com.example.myapplication.databinding.ActivityLoginBinding
+import com.example.myapplication.databinding.ActivityLoginBinding.inflate
 import com.example.myapplication.databinding.ActivityMainBinding.inflate
 import com.example.myapplication.databinding.ActivityScheduleBinding.inflate
 import com.example.myapplication.databinding.CourseListItemBinding.inflate
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.example.myapplication.ActivityLoginBinding as ActivityLoginBinding1
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding =ActivityLoginBinding.inflate(layoutInflater)
         logInStudent()
 
     }
@@ -30,16 +34,16 @@ class LoginActivity : AppCompatActivity() {
         var error=false
         binding.btnToast.setOnClickListener {
 
-            var email = binding.tilemail.text.toString()
+            var email = binding.tilemail.editText.toString()
             if (email.isEmpty()){
                 error=true
-                binding.tilemail1.setError("This field is required")
+                binding.tilemail.setError("This field is required")
             }
 
-            var password = binding.tvPassword.text.toString()
+            var password = binding.tilpassword.editText.toString()
             if (password.isEmpty()){
                 error=true
-                binding.tilPassword.setError("This field is required")
+                binding.tilpassword.setError("This field is required")
             }
             if(!error){
                 binding.btnToast.visibility= View.GONE
