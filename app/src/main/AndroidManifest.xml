@@ -11,8 +11,8 @@
         android:usersCleartextTraffic="true"
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".ScheduleActivity" />
-        <activity android:name=".CoursesActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".UI.CoursesActivity" />
+        <activity android:name=".UI.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

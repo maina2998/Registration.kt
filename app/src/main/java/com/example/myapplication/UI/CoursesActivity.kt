@@ -1,12 +1,12 @@
-package com.example.myapplication
+package com.example.myapplication.UI
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Courses
+import com.example.myapplication.R
+import com.example.myapplication.coursesRVAdapter
 
 class CoursesActivity : AppCompatActivity() {
     lateinit var rvCourses: RecyclerView
