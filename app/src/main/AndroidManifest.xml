@@ -6,9 +6,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
-
-        android:usersCleartextTraffic="true"
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".ScheduleActivity" />
         <activity android:name=".UI.CoursesActivity" />

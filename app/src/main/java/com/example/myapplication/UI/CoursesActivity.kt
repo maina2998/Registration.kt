@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Courses
 import com.example.myapplication.R
 import com.example.myapplication.coursesRVAdapter
+import com.example.myapplication.databinding.ActivityMainBinding
 
 class CoursesActivity : AppCompatActivity() {
-    lateinit var rvCourses: RecyclerView
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_courses)
+        binding =a
         displayCourses()
        }
     fun displayCourses(){

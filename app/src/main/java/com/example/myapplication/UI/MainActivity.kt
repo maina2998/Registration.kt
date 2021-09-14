@@ -1,5 +1,8 @@
 package com.example.myapplication.UI
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telecom.Call
@@ -8,8 +11,10 @@ import android.widget.*
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.API.ApiClient
 import com.example.myapplication.API.ApiInterface
+import com.example.myapplication.LoginActivity
 import com.example.myapplication.Models.RegistrationRequest
 import com.example.myapplication.Models.RegistrationResponse
+import com.example.myapplication.coursesRVAdapter
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.viewmodel.UserViewModel
 import retrofit2.Response
@@ -18,7 +23,8 @@ import kotlin.Error as Error1
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    val UserViewModel: UserViewModel by viewModels1()
+    lateinit var sharedPrefs: SharedPreferences
+    val userViewModel: UserViewModel by viewModels1()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,13 +32,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupSpinner()
         clickRegistration()
+        sharedPrefs = getSharedPreferences(Constants.REGISTRATION_PREFS,Context.MODE_PRIVATE)
+        redirectUser()
     }
 
     override fun onResume() {
         super.onResume()
-        var UserViewModel = registrationLiveData.observe(this) { regResponse ->
+        userViewModel.registrationLiveData.observe(this) { regResponse ->
             binding.pdregistration.visibility = View.GONE
-            if (!regResponse.student.isNullOrEmpty()) {
+            if (!regResponse.studentId.isNullOrEmpty()) {
                 Toast.makeText(baseContext, "Registration Successful", Toast.LENGTH_LONG).show()
             }
         }
@@ -69,13 +77,23 @@ fun setupSpinner() {
                   nationality = nationality.toUpperCase(),
                   password = password
               )
-              UserViewModel.registerStudent(regRequest)
 
 
-          }
+           }
             }
-
+    fun  redirectUser() {
+        var accessToken = sharedPrefs.getString(Constants.ACCESS_TOKEN , Constants.EMPTY_STRING)!!
+        if (accessToken.isNotEmpty() && accessToken.isNotBlank()) {
+            startActivity(Intent(this , coursesRVAdapter::class.java))
         }
+        else {
+            startActivity(Intent(this , LoginActivity::class.java))
+        }
+
+    }
+    }
+
+
 
 
 

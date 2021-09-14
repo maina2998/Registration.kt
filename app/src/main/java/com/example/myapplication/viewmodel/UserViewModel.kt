@@ -7,11 +7,11 @@ import com.example.myapplication.Models.LoginRequest
 import com.example.myapplication.Models.LoginResponse
 import com.example.myapplication.Models.RegistrationRequest
 import com.example.myapplication.Models.RegistrationResponse
-import com.example.myapplication.repository.Userrepository
+import com.example.myapplication.repository.userrepository
 import kotlinx.coroutines.launch
 
 class UserViewModel:ViewModel() {
-    val Userrepository = Userrepository()
+    val Userrepository = userrepository()
     var registrationLiveData = MutableLiveData<RegistrationResponse>()
     var errorLiveData = MutableLiveData<String>()
     var loginLiveData = MutableLiveData<LoginResponse>()
